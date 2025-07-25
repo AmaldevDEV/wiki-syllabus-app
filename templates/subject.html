@@ -1,0 +1,21 @@
+<!-- templates/subject.html (New File) -->
+{% extends "layout.html" %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ subject.name }}</li>
+        </ol>
+    </nav>
+    <h2 class="mb-4">Modules for {{ subject.name }}</h2>
+    <div class="list-group">
+        {% for module in modules %}
+            <a href="{{ url_for('module', module_id=module.id) }}" class="list-group-item list-group-item-action">
+                {{ module.title }}
+            </a>
+        {% else %}
+            <p class="text-muted">No modules have been added to this subject yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

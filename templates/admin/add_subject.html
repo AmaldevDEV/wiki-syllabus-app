@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Add a New Subject</h2>
+<p>Fill out the details for the new subject you want to teach.</p>
+<hr>
+<form method="POST">
+    <div class="mb-3">
+        <label for="subject_name" class="form-label">Subject Name</label>
+        <input type="text" class="form-control" id="subject_name" name="subject_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="university_name" class="form-label">University</label>
+        <input type="text" class="form-control" id="university_name" name="university_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="stream_name" class="form-label">Stream (e.g., Computer Science)</label>
+        <input type="text" class="form-control" id="stream_name" name="stream_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="semester_number" class="form-label">Semester Number</label>
+        <input type="number" class="form-control" id="semester_number" name="semester_number" min="1" max="10" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Subject</button>
+</form>
+{% endblock %}

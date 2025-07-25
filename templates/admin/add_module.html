@@ -1,0 +1,14 @@
+<!-- templates/admin/add_module.html -->
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Add Module to: {{ subject.name }}</h2>
+<hr>
+<form method="POST">
+    <div class="mb-3">
+        <label for="module_title" class="form-label">New Module Title</label>
+        <input type="text" class="form-control" id="module_title" name="module_title" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Module</button>
+</form>
+{% endblock %}

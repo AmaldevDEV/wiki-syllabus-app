@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Manage Module: {{ module.title }}</h2>
+<p>Add educational content and tasks for your students below.</p>
+<hr>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>Add New Content</h4>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="content_data" class="form-label">Text Content</label>
+                <textarea class="form-control" id="content_data" name="content_data" rows="5" required></textarea>
+            </div>
+            <button type="submit" name="add_content" class="btn btn-primary">Add Content</button>
+        </form>
+
+        <hr class="my-4">
+
+        <h4>Add New Task</h4>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="task_description" class="form-label">Task Description</label>
+                <input type="text" class="form-control" id="task_description" name="task_description" required>
+            </div>
+            <button type="submit" name="add_task" class="btn btn-primary">Add Task</button>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h4>Existing Content</h4>
+        <div class="list-group mb-4">
+            {% for item in content %}
+                <div class="list-group-item">{{ item.data }}</div>
+            {% else %}
+                <p class="text-muted">No content has been added yet.</p>
+            {% endfor %}
+        </div>
+
+        <h4>Existing Tasks</h4>
+        <div class="list-group">
+            {% for task in tasks %}
+                <div class="list-group-item">{{ task.description }}</div>
+            {% else %}
+                <p class="text-muted">No tasks have been added yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

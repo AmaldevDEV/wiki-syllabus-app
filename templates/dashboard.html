@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Welcome, {{ session.username }}!</h2>
+    </div>
+    <p>Select a subject to view its modules and begin learning.</p>
+    <hr>
+    <h3>Available Subjects</h3>
+    <div class="list-group">
+        {% for subject in subjects %}
+            <a href="{{ url_for('subject', subject_id=subject.id) }}" class="list-group-item list-group-item-action">
+               <strong>{{ subject.name }}</strong><br>
+               <small class="text-muted">{{ subject.uni_name }} - {{ subject.stream_name }} - Semester {{ subject.sem_number }}</small>
+            </a>
+        {% else %}
+            <p class="text-muted">No subjects have been added by any teacher yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

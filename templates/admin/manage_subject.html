@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Manage Subject: {{ subject.name }}</h2>
+<hr>
+<div class="row">
+    <div class="col-md-8">
+        <h4>Existing Modules</h4>
+        <p>Click on a module to add content and tasks to it.</p>
+        <div class="list-group">
+            {% for module in modules %}
+                <a href="{{ url_for('manage_module', module_id=module.id) }}" class="list-group-item list-group-item-action">
+                    {{ module.title }}
+                </a>
+            {% else %}
+                <p class="text-muted">No modules have been added to this subject yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>Add a New Module</h4>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="module_title" class="form-label">Module Title</label>
+                <input type="text" class="form-control" id="module_title" name="module_title" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Module</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

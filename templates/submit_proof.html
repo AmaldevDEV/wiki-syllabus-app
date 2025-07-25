@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>Submit Proof of Work</h2>
+    <h4>Task: {{ task.description }}</h4>
+    <form method="POST" action="{{ url_for('submit_proof_of_work', task_id=task.id) }}" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="proof" class="form-label">Upload your work (file)</label>
+            <input class="form-control" type="file" id="proof" name="proof" required>
+        </div>
+        <div class="mb-3">
+            <label for="comments" class="form-label">Comments (optional)</label>
+            <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
