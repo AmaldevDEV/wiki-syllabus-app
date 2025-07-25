@@ -3,12 +3,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import database
 from functools import wraps
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+load_dotenv()
 
 # --- Configuration ---
 app.config.from_mapping(
-    SECRET_KEY='a_very_secret_key_that_should_be_changed',
+    SECRET_KEY=os.environ.get('SECRET_KEY', 'a_very_secret_key_that_should_be_changed'),
     DATABASE=os.path.join(app.instance_path, 'wiki_syllabus.db'),
 )
 app.config['UPLOAD_FOLDER'] = 'uploads'
